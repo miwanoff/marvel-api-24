@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import fetchHeroes from "../utils/utils";
 
 const SearchBar = ({ setter }) => {
   // console.log("setter:" + setter);
@@ -8,12 +9,13 @@ const SearchBar = ({ setter }) => {
     console.log("Clicked");
     e.preventDefault();
     let value = input.current.value;
+    console.log(value);
     if (value === "") return;
     try {
-      //let heroes = await fetchHeroes(value);
-      let hero = [value];
-      setter(hero);
-      console.log("setter:" + hero);
+      let heroes = await fetchHeroes(value);
+      //let hero = [value];
+      setter(heroes);
+      // console.log("setter:" + hero);
     } catch (err) {
       console.error(err);
     }
