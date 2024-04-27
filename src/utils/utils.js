@@ -29,4 +29,21 @@ const fetchHeroes = async (value) => {
   }
 };
 
-export default fetchHeroes;
+const fetchHero = async (id) => {
+  let heroUrl = `${API_URL}/v1/public/characters/${id}`;
+  let url = `${heroUrl}?ts=${ts}&apikey=${apiKey}&hash=${hash}`;
+  console.log(`fetchHero: ${url}`);
+  try {
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(`data:`);
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.error(err);
+    return;
+  }
+};
+
+//export default fetchHeroes;
+export { fetchHeroes, fetchHero };
