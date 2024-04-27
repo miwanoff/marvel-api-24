@@ -13,10 +13,10 @@ const SearchBar = ({ setter }) => {
     console.log(value);
     if (value === "") return;
     try {
-      let heroes = await fetchHeroes(value);
-      //let hero = [value];
-      setter(heroes);
-      // console.log("setter:" + hero);
+      // let heroes = await fetchHeroes(value);
+      // setter(heroes);
+      let hero = await fetchHero(value);
+      setter(hero);
     } catch (err) {
       console.error(err);
     }
